@@ -115,7 +115,7 @@ UserController.ModificarPerfil = async (req, res) => {
 
         await Usuarios.update(
             {
-                foto: req.file.filename,
+                foto: `https://cocmovil.herokuapp.com/Pictures/${req.file.filename}`,
                 name: nuevoNombre
             },
             {

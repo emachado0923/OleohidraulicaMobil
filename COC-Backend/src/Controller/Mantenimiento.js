@@ -48,22 +48,22 @@ MaintenanceController.RegistrarMantenimiento = async (req, res) => {
     }
 
     if (files && body) {
-
+        console.log(body)
 
         try {
 
             Mantenimiento_body.map(async item => {
 
-                const cliente = await Clientes.findOne({where: {cliente: item.ContactoCliente}})
+                const cliente = await Clientes.findOne({where: {id: item.ContactoCliente}})
 
                 await Mantenimiento.create(
                     {
-                        imagen1: req.files.imagen1[0].filename,
-                        imagen2: req.files.imagen2[0].filename,
-                        imagen3: req.files.imagen3[0].filename,
-                        imagen4: req.files.imagen4[0].filename,
-                        imagen5: req.files.imagen5[0].filename,
-                        imagen6: req.files.imagen6[0].filename,
+                        imagen1: `https://cocmovil.herokuapp.com/Pictures/${req.files.imagen1[0].filename}`,
+                        imagen2: `https://cocmovil.herokuapp.com/Pictures/${req.files.imagen2[0].filename}`,
+                        imagen3: `https://cocmovil.herokuapp.com/Pictures/${req.files.imagen3[0].filename}`,
+                        imagen4: `https://cocmovil.herokuapp.com/Pictures/${req.files.imagen4[0].filename}`,
+                        imagen5: `https://cocmovil.herokuapp.com/Pictures/${req.files.imagen5[0].filename}`,
+                        imagen6: `https://cocmovil.herokuapp.com/Pictures/${req.files.imagen6[0].filename}`,
                         ContactoCliente: item.ContactoCliente,
                         telefono: cliente.telefono,
                         correo_cliente: cliente.correo_cliente,
@@ -120,7 +120,7 @@ MaintenanceController.RegistrarMantenimiento = async (req, res) => {
                     ManoObra_Body.map(item => {
                         ManoObra.create({
                             personal: item.personal,
-                            fechaSalida: item.fechaSalida2,
+                            fechaSalida: item.fechaSalida,
                             especialidad: item.especialidad,
                             diurno: item.diurno,
                             nocturno: item.nocturno,
@@ -166,7 +166,7 @@ MaintenanceController.RegistrarMantenimiento = async (req, res) => {
 
         }
     } else {
-        res.status(400).json('No se detectan archivos');
+        res.status(500).json('No se detectan archivos');
     }
 
 

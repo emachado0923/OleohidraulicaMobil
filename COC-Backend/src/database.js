@@ -10,11 +10,18 @@ const ManoObraModel = require('./Model/ManoObra/manoObra')
 const TrabajosExternosModel = require('./Model/TrabajosExternos/trabajosExternos')
 
 const conn = {
+    HOST: 'byflz6zfvgwna0brssv5-mysql.services.clever-cloud.com',
+    USER: 'ukjyjaittbycvjpb',
+    PASSWORD: 'tP1PAycARmfzFL5t7Vyw',
+    DATABASE: 'byflz6zfvgwna0brssv5',
+}
+//local
+/*const conn = {
     HOST: 'localhost',
     USER: 'root',
     PASSWORD: '',
     DATABASE: 'oleohidraulicos',
-}
+}*/
 
 const sequelize = new Sequelize(conn.DATABASE, conn.USER, conn.PASSWORD,
     {
